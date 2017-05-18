@@ -1,19 +1,23 @@
 require 'pry'
-def get_first_name_of_season_winner(data, season)
-  data.each do |season, season_data|
-     season_data.each do |entire_arrray|
-       entire_arrray.each do |key, value|
-       if value == "Winner"
-         return entire_arrray[:name]
-         binding.pry
-       end
-     end
-     end
-  end
+
+def get_first_name_of_season_winner(data,season)
+ data[season].each do |into_array|
+   if into_array["status"] =="Winner"
+     return into_array["name"].split(" ")[0]
+   end
+ end
 end
-get_first_name_of_season_winner(data,"season 10")
+
+
+
 def get_contestant_name(data, occupation)
-  # code here
+data.each do |season, season_array|
+  season_array.each do |into_array|
+    if into_array[:occupation] == occupation
+      return into_array[:name]
+      end
+    end
+  end
 end
 
 def count_contestants_by_hometown(data, hometown)
